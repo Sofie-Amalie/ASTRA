@@ -3,6 +3,8 @@
 # date created:             04/10/2020
 # info:                     software created for NASA Space Apps Challenge
 
+from datetime import date as date
+
 ### WIP ###
 # calculate need levels based on previous experiences
 def getNeedLevels(cycleHistory):
@@ -42,7 +44,6 @@ class State():
             return True
         else:
             return False
-
 
 class Cycle():
 
@@ -144,11 +145,41 @@ class Task():
 
                 self.activitySch.append(int(i >= durationTuple[0]) * int(i < durationTuple[1]))
 
+def checkForTasksConflicts(taskList):
+    for i in range(len(taskList)):
+        for j in range(len(taskList)):
+            if i==j or i>j: continue
+            for k in range(24):
+                if taskList[i].activitySch[k] == 1 and taskList[j].activitySch[k] == 1:
+                    if taskList[i].date == taskList[j].date:
+                        raise NameError("Tasks are colliding:",j," and ",i)
 
 class Schedule():
 
     def __init__(self,cycleHistory,targetCycle,taskList):
-        None
+        self.taskTimes = 
+        self.start = 0,0
+        self._internalClock = self.start
+        self.stop = 0,0
+        self.plan = []
+
+        for
+
+    def tiktok(self):
+        for i in range(24*(self.stop[1]-self.start[1])+(self.stop[0]-self.start[0])):
+            # assess state
+            # execute schedule
+            # change mode
+            # reschedule
+
+    def changeMode(self,mode):
+        self.mode = mode
+        if mode == "Emergency": self.rescheduleEmergency()
+        elif mode == "Restore": self.rescheduleRestore()
+        elif mode == "Alert": self.rescheduleAlert()
+        else: self.enterRegular()
+
+
 
 
 cyc = Cycle((23,7),"EB",3,5,0)
